@@ -1,0 +1,91 @@
+
+<div class="container my-5">
+
+    <h2 class="text-center mb-4">Users</h2>
+    <div class="w-75 m-auto">
+        <div class="row g-3">
+            <div class="col-10">
+              <label for="inputEmail" class="visually-hidden">Password</label>
+              <input type="email" [(ngModel)]="inputValue" class="form-control w-100" id="inputEmail" placeholder="Email">
+            </div>
+            <div class="col-auto">
+              <button (click)="search()" [disabled]="inputValue != '' ? false : true" class="btn btn-primary mb-3">Search</button>
+              <button (click)="reset()" [disabled]="inputValue !== '' ? false : true"  class="btn btn-success mb-3 ms-2">reset</button>
+            </div>
+        </div>
+    </div>
+    @if (userArr.length > 0) {
+        <div class="row mt-4">
+            @for (item of userArr; track $index) {
+                <div class="col-md-3 mb-4 text-center ">
+                    <div class="mb-3">
+                        <img [src]="item.image" alt="">
+                    </div>
+                    <div>
+                        <button class="btn" [ngClass]="item.role == 'admin' ? 'bg-danger' : item.role == 'moderator' ? 'bg-warning' : 'bg-primary'">{{item.role}}</button>
+                    </div>
+                    <div class="lista">
+                        <li class="mt-3">username is <b>{{item.firstName}} {{item.lastName}}</b></li>
+                        <li>Email is <b>{{item.email}}</b></li>
+                        <li>phone is <b>{{item.phone}}</b></li>
+                        <li>BirthDate is <b>{{item.birthDate}}</b></li>
+                    </div>
+                </div>
+            }
+        </div>
+    }@else {
+        <div class="row mt-4">
+            @for (user of users; track $index) {
+                <div class="col-md-3 mb-4 text-center ">
+                    <div class="mb-3">
+                        <img [src]="user.image" alt="">
+                    </div>
+                    <div>
+                        <button class="btn" [ngClass]="user.role == 'admin' ? 'bg-danger' : user.role == 'moderator' ? 'bg-warning' : 'bg-primary'">{{user.role}}</button>
+                    </div>
+                    <div class="lista">
+                        <li class="mt-3">username is <b>{{user.firstName}} {{user.lastName}}</b></li>
+                        <li>Email is <b>{{user.email}}</b></li>
+                        <li>phone is <b>{{user.phone}}</b></li>
+                        <li>BirthDate is <b>{{user.birthDate}}</b></li>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+
+<!-- <div class="container my-5">
+    <h2 class="text-center mb-4">Users</h2>
+    <div class="w-75 m-auto">
+        <div class="row g-3">
+            <div class="col-10">
+              <label for="inputtext" class="visually-hidden">Password</label>
+              <input type="text" [(ngModel)]="taskValue" class="form-control w-100" id="inputtext" placeholder="Add Task">
+            </div>
+            <div class="col-auto">
+              <button (click)="addTask()" [disabled]="taskValue != '' ? false : true" class="btn btn-success mb-3">Add Task</button>
+            </div>
+        </div>
+
+            @for (task of toDoList; track $index) {
+                <div class="bg-light d-flex justify-content-between align-items-center w-100 mb-3 p-3 rounded">
+                    <div>
+                        <h3 [ngClass]="{ 'text-decoration-line-through': task.isCompleted }">{{ task.task }}</h3>
+                    </div>
+                    <div>
+                        <button (click)="deleteTask(task.id)" class="btn btn-danger">delete</button>
+                        <button (click)="completed(task.id)" [disabled]="task.isCompleted ? true : false" class="btn btn-warning ms-2">Completed</button>
+                    </div>
+                </div>
+            }
+        
+
+        
+    </div>
+
+    
+
+</div> -->
